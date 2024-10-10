@@ -45,16 +45,13 @@ class StudentController extends Controller
 
     public function edit(Student $student)
     {
-        // Ambil semua data kelas untuk dropdown
         $classes = Classes::all();
 
-        // Kirim data student dan classes ke view
         return view('pages.student.edit', compact('student', 'classes'));
     }
 
     public function update(Request $request, Student $student)
     {
-        // Validasi data
         $request->validate([
             'class_id' => ['required', 'exists:classes,id'],
             'nip' => ['required'],
@@ -63,7 +60,6 @@ class StudentController extends Controller
             'gender' => ['required'],
         ]);
 
-        // Update data student
         $student->update([
             'class_id' => $request->class_id,
             'nip' => $request->nip,
@@ -72,7 +68,6 @@ class StudentController extends Controller
             'gender' => $request->gender,
         ]);
 
-        // Flash message sukses dan redirect
         session()->flash('success', 'Student updated successfully');
         return redirect()->route('student.index');
     }

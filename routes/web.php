@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +45,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/student/{student}/edit', [StudentController::class, 'edit'])->name('student.edit');
     Route::put('/student/{student}', [StudentController::class, 'update'])->name('student.update');
     Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+
+    // Teacher
+    Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
+    Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
+    Route::post('/teacher', [TeacherController::class, 'store'])->name('teacher.store');
+    Route::get('/teacher/{teacher}/edit', [TeacherController::class, 'edit'])->name('teacher.edit');
+    Route::put('/teacher/{teacher}', [TeacherController::class, 'update'])->name('teacher.update');
+    Route::delete('/teacher/{teacher}', [TeacherController::class, 'destroy'])->name('teacher.destroy');
+
+    // Subject
+    Route::get('/subject', [SubjectController::class, 'index'])->name('subject.index');
+    Route::get('/subject/create', [SubjectController::class, 'create'])->name('subject.create');
+    Route::post('/subject', [SubjectController::class, 'store'])->name('subject.store');
+    Route::get('/subject/{subject}/edit', [SubjectController::class, 'edit'])->name('subject.edit');
+    Route::put('/subject/{subject}', [SubjectController::class, 'update'])->name('subject.update');
+    Route::delete('/subject/{subject}', [SubjectController::class, 'destroy'])->name('subject.destroy');
 });
 
 require __DIR__.'/auth.php';

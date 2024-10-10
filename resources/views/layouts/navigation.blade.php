@@ -34,6 +34,18 @@
                         {{ __('Student') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('teacher.index')" :active="request()->routeIs('teacher.*')">
+                        {{ __('Teacher') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('subject.index')" :active="request()->routeIs('subject.*')">
+                        {{ __('Subject') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
